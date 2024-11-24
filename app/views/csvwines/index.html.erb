@@ -1,0 +1,22 @@
+<h1>Import and display wines table</h1>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>nom</th>
+      <th>couleur</th>
+      <th>millesime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= wine.id %></td>
+        <td><%= wine.nom %></td>
+        <td><%= wine.couleur %></td>
+        <td><%= wine.millesime %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

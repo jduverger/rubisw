@@ -1,0 +1,57 @@
+<div align="center">
+<h1>Liste de mes vins</h1>
+<br>
+<table class="table-container">
+  <thead>
+    <tr>
+      <th>
+      <%= form_with(url:"/winesdisp", method: :get, class: "wine-form") do |f| %>
+      <div class="form-actions">
+      <%= f.submit "Etiquette", class: "btn btn-primary" %>
+      </div><% end %>
+      </th>
+      <th>
+      <%= form_with(url:"/winesdisp2", method: :get, class: "wine-form") do |f| %>
+      <div class="form-actions">
+      <%= f.submit "couleur", class: "btn btn-primary" %>
+      </div><% end %>
+      </th>
+      <th>
+      <%= form_with(url:"/winesdisp3", method: :get, class: "wine-form") do |f| %>
+      <div class="form-actions">
+      <%= f.submit "millésime", class: "btn btn-primary" %></div><% end %>
+      </th>
+      <th>
+      <%= form_with(url:"/winesdisp4", method: :get, class: "wine-form") do |f| %>
+      <div class="form-actions">
+      <%= f.submit "régions", class: "btn btn-primary" %>
+      </div><% end %>
+      </th>
+      <%= form_with(url:"/winesdisp5", method: :get, class: "wine-form") do |f| %>
+      <th><div class="form-actions">
+      <%= f.submit "cepages", class: "btn btn-primary" %>
+      </div><% end %>
+      </th>
+      <th>
+      <%= form_with(url:"/winesdisp", method: :get, class: "wine-form") do |f| %>
+      <div class="form-actions">
+      <div class="btn btn-primary">Qte</div>
+      </div><% end %>
+      </th>
+      <th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= wine.nom %></td>
+        <td><%= wine.couleur %></td>
+        <td><%= wine.millesime %></td>
+        <td><%= wine.regions %></td>
+        <td><%= wine.cepage %></td>
+        <td><%= wine.qte %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

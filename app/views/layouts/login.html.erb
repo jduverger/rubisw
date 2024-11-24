@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= content_for(:title) || "Login" %></title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+</title>
+<%= stylesheet_link_tag "login" %>
+<style>
+#box {
+		background-image: url(<%= asset_path('keys.jpeg')%>);
+		background-repeat: no-repeat; 
+		background-position: center right;
+}
+</style>
+</head>
+<body>
+<%= yield %>
+</body>
+</html>

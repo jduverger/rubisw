@@ -1,0 +1,31 @@
+<span align="center">
+<div id="box">
+<div style="color:red">
+<%= @errors %>
+</div>
+<strong>Connexion/Login</strong><br />
+<table>
+<tr><td>from:</td>
+<td><%= @backafterreg %></td>
+</tr>
+<%= form_with(url:"/logincheck", method: :post) do |f| %>
+<tr><td><label >Email utilisateur</label></td>
+<td><input type="text" name="email" size="40" autocomplete='off' value=""></td>
+</tr><br/><br/>
+<tr><td><label>Password/mot de passe</label></td>
+<td><input type="password" name="pwd" size="40" autocomplete='off'></td>
+</tr></table>
+<br/><br/>
+<button type="submit" style="background:lightblue">Connection/Login</button>
+<br/>
+<% end %>
+<%= form_with(url:@backafterreg, method: :get) do |f| %>
+<button type="submit" style="background:red">Retour/Annuler !</button>
+<br/>
+<% end %>
+<!-->
+<a href="<%= @backafterreg %>">Mot de passe oublié/Forgot Your Password?</a>
+-->
+<br/>
+</div>
+</span>

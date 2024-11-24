@@ -1,0 +1,32 @@
+<div align="center">
+    <h1>Mon livre de cave</h1>
+    <div class="container">
+        <%= form_with(url:"/winesdisp", method: :get, class: "wine-form") do |f| %>
+        <div class="form-actions">
+        <%= f.submit "Liste de mes vins", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <%= form_with(url:"/winesnew", method: :get, class: "wine-form") do |f| %>
+        <div class="form-actions">
+        <%= f.submit "Ajouter un vin", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <%= form_with(url:"/winesqte", method: :get, class: "wine-form") do |f| %>
+        <div class="form-actions">
+        <%= f.submit "Ajouter/Supprimer une bouteille", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <%= form_with(url:"/winesclean", method: :get, class: "wine-form") do |f| %>
+        <div class="form-actions">
+        <%= f.submit "Supprimer un vin (quelque soit la qte restante)", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <%= form_with(url:"", method: :get,class: "wine-form") do |f| %>
+        <div class="form-actions">
+        <div class="btn btn-primary">
+        <a href="https://www.wine-searcher.com/">Mon vin sur wine-searcher.com</a>
+        </div>
+        </div>
+        <% end %>
+    </div>
+</div>

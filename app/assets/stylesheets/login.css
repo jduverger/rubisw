@@ -1,0 +1,23 @@
+body {
+	background-color:lightskyblue;
+	font-family: georgia, verdana, sans-serif; 
+	font-size: 13px; 
+	color: grey;
+	padding-top:50px;
+} 
+input {
+	background-color:#eee;
+	color:black;
+	border:1px solid black;
+}
+img {
+	border:none;
+}
+#box {
+	 background-color: white;
+	 width:600px; 
+	 /* height:140px; */
+	 border:3px double gray; 
+	 padding:20px; 
+	 margin:auto;
+}

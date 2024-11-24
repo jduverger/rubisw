@@ -1,0 +1,34 @@
+<div align="center">
+<h1>Supprimer une étiquette</h1>
+Quelque soit la quantité de bouteilles restante
+<br><br>
+<table class="table-container">
+  <thead>
+    <tr>
+      <th>Etiquette</th>
+      <th>couleur</th>
+      <th>millesime</th>
+      <th>qte</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= wine.nom %></td>
+        <td><%= wine.couleur %></td>
+        <td><%= wine.millesime %></td>
+        <td><%= wine.qte %></td>
+        <td>
+        <%= form_with(url:"/winesdel", method: :post, class: "wine-form") do |f| %>
+        <%= hidden_field_tag :wid, wine.id %>
+        <%= f.submit "Sup.", class: "btn btn-action" %>
+        <% end %>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

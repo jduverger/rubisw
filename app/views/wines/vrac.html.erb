@@ -1,0 +1,78 @@
+<div class="container">
+  <h1>Create New User Profile</h1>
+
+  <%= form_with(model: @user, local: true, class: "user-form") do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error-messages">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :full_name %>
+      <%= f.text_field :full_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :birth_date %>
+      <%= f.date_field :birth_date, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :occupation %>
+      <%= f.select :occupation, 
+          options_for_select([
+            ['Student', 'student'],
+            ['Professional', 'professional'],
+            ['Entrepreneur', 'entrepreneur'],
+            ['Other', 'other']
+          ]), 
+          { include_blank: 'Select occupation' },
+          { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label>Interests</label>
+      <div class="checkbox-group">
+        <%= f.collection_check_boxes :interest_ids, Interest.all, :id, :name do |b| %>
+          <div class="checkbox-item">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :bio %>
+      <%= f.text_area :bio, rows: 4, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :profile_picture %>
+      <%= f.file_field :profile_picture, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <div class="checkbox">
+        <%= f.check_box :terms_accepted %>
+        <%= f.label :terms_accepted, "I accept the terms and conditions" %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Create Profile", class: "btn btn-primary" %>
+      <%= link_to "Cancel", users_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>

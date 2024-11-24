@@ -1,0 +1,17 @@
+
+/bin
+/lib
+/log
+/public
+/script
+/storage
+/test
+/tmp
+/vendor
+config.ru
+Gemfile
+Gemfile.lock
+package.json
+Rakefile
+README.md
+

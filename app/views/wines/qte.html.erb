@@ -1,0 +1,38 @@
+<div align="center">
+<h1>Ajouter/Supprimer une bouteille</h1>
+<br><br>
+<table class="table-container">
+  <thead>
+    <tr>
+      <th>Etiquette</th>
+      <th>couleur</th>
+      <th>millesime</th>
+      <th></th>
+      <th>qte</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= wine.nom %></td>
+        <td><%= wine.couleur %></td>
+        <td><%= wine.millesime %></td>
+        <td>
+        <%= form_with(url:"/winesupdmin", method: :post, class: "wine-form") do |f| %>
+        <%= hidden_field_tag :wid, wine.id %>
+        <%= f.submit "-", class: "btn btn-action" %>
+        <% end %>
+        <td><%= wine.qte %></td>
+        <td>
+        <%= form_with(url:"/winesupdmax", method: :post, class: "wine-form") do |f| %>
+        <%= hidden_field_tag :wid, wine.id %>
+        <%= f.submit "+", class: "btn btn-action" %>
+        <% end %>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

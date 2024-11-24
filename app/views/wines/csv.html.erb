@@ -1,0 +1,26 @@
+<div align="center">
+<h1>Import (from csv) and display my wine list</h1>
+<br>
+<table class="table-container">
+  <thead>
+    <tr>
+      <th>Etiquette</th>
+      <th>couleur</th>
+      <th>millesime</th>
+      <th>region</th>
+      <th>cepages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= wine.nom %></td>
+        <td><%= wine.couleur %></td>
+        <td><%= wine.millesime %></td>
+        <td><%= wine.regions %></td>
+        <td><%= wine.cepage %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
