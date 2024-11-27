@@ -3,6 +3,10 @@
 /config/*
 !/config/
 !/config/routes.rb
+/db/*
+!/db/
+!/db/migrate/
+!/db/migrate/*
 /lib
 /log
 /public
