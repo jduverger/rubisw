@@ -1,6 +1,7 @@
 
 /bin
 /config/*
+!/config/
 !/config/routes.rb
 /lib
 /log
