@@ -44,10 +44,10 @@ class WinesController < ApplicationController
 
   def list
     @wines = Wine.alphabet
+    @lines = [' --- header ---']
     @wines.each do |wine|
       @lines.append("#{wine.nom} --- #{wine.millesime} --- #{wine.qte}")
     end
-    render('wines/list')
   end
 
   def csv
