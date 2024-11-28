@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/winesdisp3', to: 'wines#disp3'
   get '/winesdisp4', to: 'wines#disp4'
   get '/winesdisp5', to: 'wines#disp5'
+  get '/wineslist', to: 'wines#list'
   get '/winescsv', to: 'wines#csv'
   get '/winesnew', to: 'wines#new'
   post '/winesadd', to: 'wines#add'

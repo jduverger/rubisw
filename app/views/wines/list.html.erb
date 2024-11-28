@@ -1,0 +1,9 @@
+<div align="center">
+  <% if @lines.present? %>
+    <% @lines.each do |line| %>
+      <%= line %><br>
+    <% end %>
+  <% else %>
+    No lines available
+  <% end %>
+</div>

@@ -21,6 +21,11 @@
         <%= f.submit "Supprimer un vin (quelque soit la qte restante)", class: "btn btn-primary" %>
         </div>
         <% end %>
+        <%= form_with(url:"/wineslist", method: :get, class: "wine-form") do |f| %>
+        <div class="form-actions">
+        <%= f.submit "Liste pour inventaire", class: "btn btn-primary", name: nil %>
+        </div>
+        <% end %>
         <%= form_with(url:"", method: :get,class: "wine-form") do |f| %>
         <div class="form-actions">
         <div class="btn btn-primary">
