@@ -12,6 +12,7 @@
     </tr>
   </thead>
   <tbody>
+  <% if @wines.present? %>
     <% @wines.each do |wine| %>
       <tr>
         <td><%= wine.nom %></td>
@@ -21,6 +22,9 @@
         <td><%= wine.cepage %></td>
       </tr>
     <% end %>
+  <% else %>
+    No data available
+  <% end %>
   </tbody>
 </table>
 </div>

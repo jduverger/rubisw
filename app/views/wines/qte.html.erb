@@ -13,6 +13,7 @@
     </tr>
   </thead>
   <tbody>
+  <% if @wines.present? %>
     <% @wines.each do |wine| %>
       <tr>
         <td><%= wine.nom %></td>
@@ -30,9 +31,11 @@
         <%= f.submit "+", class: "btn btn-action" %>
         <% end %>
         </td>
-        
       </tr>
     <% end %>
+  <% else %>
+    No data available
+  <% end %>
   </tbody>
 </table>
 </div>

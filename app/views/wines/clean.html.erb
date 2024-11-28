@@ -14,8 +14,9 @@ Quelque soit la quantité de bouteilles restante
     </tr>
   </thead>
   <tbody>
-    <% @wines.each do |wine| %>
-      <tr>
+    <% if @wines.present? %>
+      <% @wines.each do |wine| %>
+        <tr>
         <td><%= wine.nom %></td>
         <td><%= wine.couleur %></td>
         <td><%= wine.millesime %></td>
@@ -25,9 +26,11 @@ Quelque soit la quantité de bouteilles restante
         <%= hidden_field_tag :wid, wine.id %>
         <%= f.submit "Sup.", class: "btn btn-action" %>
         <% end %>
-        </td>
-        
-      </tr>
+        </td>   
+        </tr>
+      <% end %>
+    <% else %>
+    No data available
     <% end %>
   </tbody>
 </table>
