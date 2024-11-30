@@ -2,21 +2,7 @@ require 'csv'
 class WinesController < ApplicationController
   layout :choose_layout
 
-  private
-
-  def choose_layout
-    case action_name
-    when 'index'
-      'wineswimage'
-    when 'list'
-      'winesblank'
-    else
-      'wines'
-    end
-  end
-
-  def index
-  end
+  def index; end
 
   def disp
     @wines = Wine.alphabet
@@ -51,19 +37,12 @@ class WinesController < ApplicationController
   end
 
   def csv
-    csv_path = Rails.root.join('public/cellar_saintismier.csv')
+    csv_path = Rails.root.join('cellar_saintismier.csv')
+    puts "*** csvpath : #{csv_path}"
     Wine.delete_all
     CSV.foreach(csv_path) do |line|
       obj = Wine.new
-      obj.nom = line[0]
-      obj.couleur = line[1]
-      obj.producteur = line[2]
-      obj.cru = line[3]
-      obj.millesime = line[4]
-      obj.regions = line[5]
-      obj.cepage = line[6]
-      obj.qte = line[7]
-      obj.estimation = line[8]
+      updatefromcsv(obj, line)
       obj.save
     end
     @wines = Wine.alphabet
@@ -78,17 +57,9 @@ class WinesController < ApplicationController
   end
 
   def add
+    puts '*** add a wine object in the db'
     obj = Wine.new
-    obj.nom = params[:nom]
-    obj.couleur = params[:couleur]
-    obj.producteur = params[:producteur]
-    obj.cru = params[:cru]
-    obj.millesime = params[:millesime]
-    obj.regions = params[:regions]
-    obj.cepage = params[:cepage]
-    obj.qte = params[:qte]
-    obj.estimation = params[:estimation]
-    obj.evaluation = params[:evaluation]
+    updatefromform(obj)
     obj.save
     redirect_to wines_path
   end
@@ -105,6 +76,7 @@ class WinesController < ApplicationController
 
   def del
     wid = params[:wid]
+    puts "*** destroy wine #{wid}"
     Wine.destroy(wid)
     @wines = Wine.alphabet
     render('wines/clean')
@@ -140,5 +112,43 @@ class WinesController < ApplicationController
     end
     @wines = Wine.alphabet
     render('wines/qte')
+  end
+
+  private
+
+  def choose_layout
+    case action_name
+    when 'index'
+      'wineswimage'
+    when 'list'
+      'winesblank'
+    else
+      'wines'
+    end
+  end
+
+  def updatefromcsv(obj, line)
+    obj.nom = line[0]
+    obj.couleur = line[1]
+    obj.producteur = line[2]
+    obj.cru = line[3]
+    obj.millesime = line[4]
+    obj.regions = line[5]
+    obj.cepage = line[6]
+    obj.qte = line[7]
+    obj.estimation = line[8]
+  end
+
+  def updatefromform(obj)
+    obj.nom = params[:nom]
+    obj.couleur = params[:couleur]
+    obj.producteur = params[:producteur]
+    obj.cru = params[:cru]
+    obj.millesime = params[:millesime]
+    obj.regions = params[:regions]
+    obj.cepage = params[:cepage]
+    obj.qte = params[:qte]
+    obj.estimation = params[:estimation]
+    obj.evaluation = params[:evaluation]
   end
 end
