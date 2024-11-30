@@ -3,22 +3,22 @@
     <div class="container">
         <%= form_with(url:"/winesdisp", method: :get, class: "wine-form") do |f| %>
         <div class="form-actions">
-        <%= f.submit "Liste de mes vins", class: "btn btn-primary" %>
+        <%= f.submit "Liste de mes vins", class: "btn btn-primary", name: nil %>
         </div>
         <% end %>
         <%= form_with(url:"/winesnew", method: :get, class: "wine-form") do |f| %>
         <div class="form-actions">
-        <%= f.submit "Ajouter un vin", class: "btn btn-primary" %>
+        <%= f.submit "Ajouter un vin", class: "btn btn-primary", name: nil %>
         </div>
         <% end %>
         <%= form_with(url:"/winesqte", method: :get, class: "wine-form") do |f| %>
         <div class="form-actions">
-        <%= f.submit "Ajouter/Supprimer une bouteille", class: "btn btn-primary" %>
+        <%= f.submit "Ajouter/Supprimer une bouteille", class: "btn btn-primary", name: nil %>
         </div>
         <% end %>
         <%= form_with(url:"/winesclean", method: :get, class: "wine-form") do |f| %>
         <div class="form-actions">
-        <%= f.submit "Supprimer un vin (quelque soit la qte restante)", class: "btn btn-primary" %>
+        <%= f.submit "Supprimer un vin (quelque soit la qte restante)", class: "btn btn-primary", name: nil %>
         </div>
         <% end %>
         <%= form_with(url:"/wineslist", method: :get, class: "wine-form") do |f| %>
