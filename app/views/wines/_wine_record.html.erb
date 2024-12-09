@@ -1,0 +1,66 @@
+
+<% if wine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(wine.errors.count, "error") %> Création/modification impossible</h2>
+        <% wine.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+    </div>
+<% end %>
+<%= form_with(model: wine, local: true, data: { turbo: false }) do |form| %>
+<table>
+<tr class="field">
+    <td><%= form.label :nom %></td>
+    <td><%= form.text_field :nom %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :couleur %></td>
+    <td><%= form.text_field :couleur %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :producteur %></td>
+    <td><%= form.text_field :producteur %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :cru %></td>
+    <td><%= form.text_field :cru %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :millesime %></td>
+    <td><%= form.number_field :millesime %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :regions %></td>
+    <td><%= form.text_field :regions %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :cepage %></td>
+    <td><%= form.text_field :cepage %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :qte %></td>
+    <td><%= form.text_field :qte %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :estimation %></td>
+    <td><%= form.number_field :estimation %></td>
+  </div>
+</tr>
+<tr class="field">
+    <td><%= form.label :evaluation %></td>
+    <td><%= form.text_field :evaluation %></td>
+  </div>
+</tr>
+</table>
+<div class="actions">
+    <%= form.submit "Ajouter ou modifier" %>
+</div>
+<% end %>

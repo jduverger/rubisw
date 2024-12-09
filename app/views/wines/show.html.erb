@@ -1,0 +1,59 @@
+<div align="center">
+<h1>Détails de ce vin</h1>
+<br><br><br><br><br>
+la supression a lieu quelque soit la quantité de bouteilles restante
+<div class="actions">
+      <%= link_to "Retour a la liste", "/winesmod", class: "back-button" %>
+      <%= link_to "Modification", "/wines/#{@wine.id}/edit", class: "edit-button" %>
+      <%= button_to "Supprime", 
+              wine_path(@wine), 
+              method: :delete,
+              class: "delete-button",
+              data: { turbo: false } %>
+</div>
+  <div class="details-card">
+    <div class="detail-row">
+      <strong>id:</strong>
+      <span><%= @wine.id %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Etiquette:</strong>
+      <span><%= @wine.nom %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Couleur:</strong>
+      <span><%= @wine.couleur %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Producteur:</strong>
+      <span><%= @wine.producteur %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Cru:</strong>
+      <span><%= @wine.cru %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Millesime:</strong>
+      <span><%= @wine.millesime %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Région:</strong>
+      <span><%= @wine.regions %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Cépage:</strong>
+      <span><%= @wine.cepage %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Qte:</strong>
+      <span><%= @wine.qte %></span>
+    </div>
+      <div class="detail-row">
+      <strong>Estimation:</strong>
+      <span><%= @wine.estimation %></span>
+    </div>
+    <div class="detail-row">
+      <strong>Evaluation:</strong>
+      <span><%= @wine.evaluation %></span>
+    </div>
+</div>

@@ -30,7 +30,7 @@ class WinesController < ApplicationController
 
   def list
     @wines = Wine.alphabet
-    @lines = [' --- header ---']
+    @lines = [' --- Liste des vins pour inventaire ---']
     @wines.each do |wine|
       @lines.append("#{wine.nom} --- #{wine.millesime} --- #{wine.qte}")
     end
@@ -50,21 +50,31 @@ class WinesController < ApplicationController
 
   def new
     lname = session[:lname]
-    return if lname
-
-    session[:backafterreg] = winesclean_path
-    redirect_to login_path
+    unless lname
+      session[:backafterreg] = '/wines/new'
+      redirect_to login_path
+      return
+    end
+    @wine = Wine.new
   end
 
-  def add
-    puts '*** add a wine object in the db'
-    obj = Wine.new
-    updatefromform(obj)
-    obj.save
-    redirect_to wines_path
+  def create
+    puts "Params received: #{params.inspect}"
+    @wine = Wine.new(wine_params)
+    if @wine.save
+      redirect_to @wine, notice: 'Wines was successfully created.'
+    else
+      puts "Error messages: #{@wine.errors.full_messages}"
+      puts "Wine attributes: #{@wine.attributes}"
+      render :new
+    end
   end
 
-  def clean
+  def show
+    @wine = Wine.find(params[:id])
+  end
+
+  def mod
     lname = session[:lname]
     unless lname
       session[:backafterreg] = '/wines'
@@ -74,12 +84,25 @@ class WinesController < ApplicationController
     @wines = Wine.alphabet
   end
 
-  def del
-    wid = params[:wid]
-    puts "*** destroy wine #{wid}"
-    Wine.destroy(wid)
+  def edit
+    @wine = Wine.find(params[:id])
+  end
+
+  def update
+    @wine = Wine.find(params[:id])
+    if @wine.update(wine_params)
+      redirect_to @wine, notice: 'Wines was successfully updated.'
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @wine = Wine.find(params[:id])
+    puts "*** destroy wine #{@wine.id}"
+    @wine.destroy
     @wines = Wine.alphabet
-    render('wines/clean')
+    redirect_to '/winesmod'
   end
 
   def qte
@@ -127,6 +150,21 @@ class WinesController < ApplicationController
     end
   end
 
+  def wine_params
+    params.require(:wine).permit(
+      :nom,
+      :couleur,
+      :producteur,
+      :cru,
+      :millesime,
+      :regions,
+      :cepage,
+      :qte,
+      :estimation,
+      :evaluation
+    )
+  end
+
   def updatefromcsv(obj, line)
     obj.nom = line[0]
     obj.couleur = line[1]
@@ -137,18 +175,5 @@ class WinesController < ApplicationController
     obj.cepage = line[6]
     obj.qte = line[7]
     obj.estimation = line[8]
-  end
-
-  def updatefromform(obj)
-    obj.nom = params[:nom]
-    obj.couleur = params[:couleur]
-    obj.producteur = params[:producteur]
-    obj.cru = params[:cru]
-    obj.millesime = params[:millesime]
-    obj.regions = params[:regions]
-    obj.cepage = params[:cepage]
-    obj.qte = params[:qte]
-    obj.estimation = params[:estimation]
-    obj.evaluation = params[:evaluation]
   end
 end

@@ -1,33 +1,23 @@
 <div align="center">
-    <h1>Bienvenue sur tout autrement !</h1>
-    <span style="color:red;"><strong>my Ruby on Rails prototype website is now live</strong></span>
-    <div class="container">
-        <%= form_with(url:"/wines", method: :get, class: "wine-form") do |f| %>
-        <div class="form-actions">
-        <%= f.submit "Gérer ma cave", class: "btn btn-primary", name: nil %>
-        </div>
-        <% end %>
-
-        <%= form_with(url:"", method: :get, class: "wine-form") do |f| %>
-        <div class="form-actions">
-        <%= f.submit "BlaBla", class: "btn btn-primary", name: nil %>
-        </div>
-        <% end %>
-
-        <%= form_with(url:"", method: :get, class: "wine-form") do |f| %>
-        <div class="form-actions">
-        <div class="btn btn-primary">
-        <a href="http://www.newoueb.com/tat/blog/">Le blog de maryse</a>
-        </div>
-        </div>
-        <% end %>
-
-        <%= form_with(url:"", method: :get,class: "wine-form") do |f| %>
-        <div class="form-actions">
-        <div class="btn btn-primary">
-        <a href="http://www.newoueb.com/jdb/blog/">Le blog de jacques</a>
-        </div>
-        </div>
-        <% end %>
+<h1>Bienvenue sur tout autrement !</h1>
+<span style="color:red;"><strong>my Ruby on Rails prototype website is now live</strong></span>
+<div class="container">
+<div class= "wine-form">
+    <div class="form-actions">
+    <%= link_to "Gérer ma cave", "/wines", class: "btn btn-primary" %>
     </div>
+    <div class="form-actions">
+    <%= link_to "En chantier", "", class: "btn btn-primary" %>
+    </div>
+    <div class="form-actions">
+    <div class="btn btn-primary">
+    <a href="http://www.newoueb.com/tat/blog/">Le blog de maryse</a>
+    </div>
+    </div>
+    <div class="form-actions">
+    <div class="btn btn-primary">
+    <a href="http://www.newoueb.com/jdb/blog/">Le blog de jacques</a>
+    </div>
+</div>
+</div>
 </div>

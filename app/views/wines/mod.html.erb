@@ -1,7 +1,10 @@
+<div class="form-actions">
+  <%= link_to "Retour", "/wines", class: "btn btn-primary" %>
+</div>
 <div align="center">
-<h1>Supprimer une étiquette</h1>
-Quelque soit la quantité de bouteilles restante
+<h1>Voir le détail d'une étiquette</h1>
 <br><br>
+Click sur bouton a droite pour modifier/supprimer
 <table class="table-container">
   <thead>
     <tr>
@@ -22,10 +25,10 @@ Quelque soit la quantité de bouteilles restante
         <td><%= wine.millesime %></td>
         <td><%= wine.qte %></td>
         <td>
-        <%= form_with(url:"/winesdel", method: :post, class: "wine-form") do |f| %>
-        <%= hidden_field_tag :wid, wine.id %>
-        <%= f.submit "Sup.", class: "btn btn-action" %>
-        <% end %>
+        <%= link_to "mod/supp", 
+          "/wines/"+ wine.id.to_s, 
+          method: :show, 
+          class: "edit-button" %>
         </td>   
         </tr>
       <% end %>

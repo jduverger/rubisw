@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_importmap_tags %>
     <title><%= content_for(:title) || "Wines" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -10,11 +13,14 @@
     <style>body { 
       background-image: url(<%= asset_path('bouteilles.jpeg')%>);
       background-size: 20%;
-      background-position: left top;
+      background-position: right top;
       background-repeat: no-repeat;
       background-color: thistle;
     }
     </style>
+    <script>
+      setupNavigationPrevention()
+    </script>
     </head>
   <body>
     <%= yield %>
