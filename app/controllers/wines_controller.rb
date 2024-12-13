@@ -61,13 +61,8 @@ class WinesController < ApplicationController
   def create
     puts "Params received: #{params.inspect}"
     @wine = Wine.new(wine_params)
-    if @wine.save
-      redirect_to @wine, notice: 'Wines was successfully created.'
-    else
-      puts "Error messages: #{@wine.errors.full_messages}"
-      puts "Wine attributes: #{@wine.attributes}"
-      render :new
-    end
+    @wine.save
+    redirect_to '/wines/new'
   end
 
   def show

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "jsconfirm", defer: true %>
 <div align="center">
 <h1>Détails de ce vin</h1>
 <br><br><br><br><br>
@@ -9,7 +10,7 @@ la supression a lieu quelque soit la quantité de bouteilles restante
               wine_path(@wine), 
               method: :delete,
               class: "delete-button",
-              data: { turbo: false } %>
+              form: {data: { confirm: "Are you sure?" } } %>
 </div>
   <div class="details-card">
     <div class="detail-row">

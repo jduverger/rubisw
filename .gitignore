@@ -21,4 +21,7 @@ Gemfile.lock
 package.json
 Rakefile
 README.md
+/node_modules
+/package-lock.json
+*.sqlite3
 
