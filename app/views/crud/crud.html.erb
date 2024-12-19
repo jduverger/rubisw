@@ -1,0 +1,40 @@
+<div class="model-select">
+  <%= form_tag('/crud/check', method: :post) do %>
+    <%= select_tag "Mname", 
+        options_for_select(@model_list, @model_name), 
+        prompt: "Select a model",
+        class: "form-control" %>
+    <%= submit_tag "View Records" %>
+  <% end %>
+</div>
+<% if @model_name %>
+  <div class="action-button">
+    <%= link_to "Add New #{@model_name}", { action: :new, MN: @model_name } %>
+  </div>
+<% end %>
+<% if @object_list && @fields %>
+<div>
+<table>
+  <tr>
+  <% @fields.each do |field| %>
+      <td><b><%= field.humanize %></b></td>
+  <% end %>
+  <td>Actions</td>
+  </tr>
+  <% @object_list.each do |record| %>
+  <tr>
+    <% record.each do |value| %>
+      <td><%= value %></td>
+    <% end %>
+    <td>
+      <%= form_tag('/crud/rem', method: :post, class: 'delete-form') do %>
+          <%= hidden_field_tag :MN, @model_name %>
+          <%= hidden_field_tag :id, record.first %>
+          <%= submit_tag "Delete", data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+  </div>
+<% end %>

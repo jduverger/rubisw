@@ -1,0 +1,33 @@
+body {
+	font-family:Georgia, serif;
+	font-size:34px;
+	margin:Â 72px auto;
+	font-style: italic;
+	font-weight: normal;
+/*	background-color:#FC3; */
+}
+
+a:link {text-decoration: none}
+a:visited {text-decoration: none}
+a:active {text-decoration: none}
+a:hover {text-decoration: none}
+
+.title {
+	font-size: 30px;
+	color:black;
+	text-shadow:3px 3px 3px grey;
+}
+
+.item {
+	font-size: 26px;
+	color:blue;
+	text-shadow:3px 3px 3px grey;
+}
+
+.petiteligne {
+	color:black;
+	font-size: small;
+	line-height: 14px;
+	text-shadow: none;
+}
+

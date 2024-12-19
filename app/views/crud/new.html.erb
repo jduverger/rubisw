@@ -1,0 +1,43 @@
+<div>
+  <h2>New <%= @model_name %></h2>
+  <%= form_tag("/crud/create", method: :post, class: "form") do %>
+    <%= hidden_field_tag :MN, @model_name %>
+    <table>
+    <% @fields.each do |field| %>
+      <tr>
+        <td>
+        <%= label_tag "record[#{field}]", field.humanize %>
+        </td>
+        <td>
+        <% if field.end_with?('_id') %>
+          <% related_model = field.gsub('_id', '').camelize %>
+          <%= select_tag "record[#{field}]",
+                        options_from_collection_for_select(related_model.constantize.all, :id, :to_s),
+                        prompt: "Select #{related_model.humanize}" %>
+        <% else %>
+          <% field_type = @model.columns_hash[field].type %>
+          <% case field_type.to_s %>
+          <% when 'boolean' %>
+            <%= check_box_tag "record[#{field}]", "1", false %>
+          <% when 'text' %>
+            <%= text_area_tag "record[#{field}]", nil %>
+          <% else %>
+            <%= text_field_tag "record[#{field}]", nil %>
+          <% end %>
+        <% end %>
+      </td>
+      </tr>
+    <% end %>
+    </table>
+    <br>
+    <div>
+      <%= submit_tag "Create #{@model_name}" %>
+      <%= link_to "Back to List", { action: :home } %>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger mt-3">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>

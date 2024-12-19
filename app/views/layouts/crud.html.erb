@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @title || "Dynamic CRUD Interface" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_importmap_tags %>
+    <style>
+      .table-container { margin: 20px; }
+      .version-info { color: #666; font-size: 0.9em; margin: 10px; }
+      .action-button { margin: 5px; }
+      .model-select { margin: 20px; padding: 5px; }
+      table { border: 1px solid black; border-collapse: collapse; }
+      tr:nth-child(even) {background: #CCC}
+      tr:nth-child(odd) {background: #FFF}
+      .gros { font-weight: 'bold';}
+    </style>
+    <%= javascript_include_tag "jsconfirm", defer: true %>
+  </head>
+  <body>
+    <div class="container">
+      <h1><%= @title %></h1>
+      <div class="version-info">
+        <%= @versions %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

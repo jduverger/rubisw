@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/login', to: 'login#index'
   post '/logout', to: 'login#logout'
   post '/logincheck', to: 'login#check'
+  get  '/admin', to: 'admin#index'
   # what follows replace
   # GET    /wines          -> index
   # GET    /wines/new      -> new
@@ -18,6 +19,11 @@ Rails.application.routes.draw do
   # GET    /wines/:id/edit -> edit
   # PATCH  /wines/:id      -> update
   # DELETE /wines/:id      -> destroy
+  get '/crud', to: 'crud#home'
+  post '/crud/check', to: 'crud#check'
+  post '/crud/rem', to: 'crud#rem'
+  get '/crud/new', to: 'crud#new'
+  post '/crud/create', to: 'crud#create'
   Rails.application.routes.draw do
     resources :wines
   end
